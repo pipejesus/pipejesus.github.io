@@ -8,14 +8,13 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Greg Jasiński: Resume/Portfolio</title>    
-    <script type="module" crossorigin src="/assets/index-013d5a7f.js"></script>
-    <link rel="stylesheet" href="/assets/index-03d06e2e.css">
+    <script type="module" crossorigin src="/assets/index-02731fc2.js"></script>
+    <link rel="stylesheet" href="/assets/index-d5e9b95f.css">
   </head>
 
   <body 
     x-data="{
-      current: null,
-    czoko: null,
+      current: null,      
       navItems: [],
       observer: null,
       isNavigating: false,
@@ -96,7 +95,7 @@
 
     <!--#1 Intro section-->
     <section class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start" data-section-slug="intro" data-section-name="who & why">
-      <div class="grid lg:pb-12 lg:grid-rows-[1fr_auto] lg:grid-cols-[1fr] lg:h-screen" >
+      <div class="grid lg:pb-6 3xl:pb-12 lg:grid-rows-[1fr_auto] lg:grid-cols-[1fr] lg:h-screen" >
 
         <!--Presentation section-->
         <div 
@@ -217,8 +216,8 @@
                 <canvas 
                   class="emscripten-ptack w-full h-auto aspect-square lg:aspect-square lg:w-full lg:h-full object-cover mask mask-squircle lg:rotate-[25deg] hide-firefox-error shrink lg:shrink-0" 
                   id="canvas"
-                  oncontextmenu=event.preventDefault() 
-                  tabindex=-1>
+                  oncontextmenu="event.preventDefault()"
+                  tabindex="-1">
                 </canvas>
 
                 <div class="absolute h-full w-full z-10 top-0 left-0 lg:rotate-[25deg]"></div>  
