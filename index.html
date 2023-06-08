@@ -8,8 +8,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Greg Jasiński: Resume/Portfolio</title>    
-    <script type="module" crossorigin src="/assets/index-34443506.js"></script>
-    <link rel="stylesheet" href="/assets/index-4731d4d3.css">
+    <script type="module" crossorigin src="/assets/index-1d8f0ab4.js"></script>
+    <link rel="stylesheet" href="/assets/index-a422a3ab.css">
   </head>
 
   <body 
@@ -18,17 +18,21 @@
       navItems: [],
       observer: null,
       isNavigating: false,
-      timeOut: null,
+      timeOut: null,      
       ptackModal: false,
       stackPhaze: 0,      
-      music: false,
+      music: false,      
       navClick(slug) {
         this.isNavigating = true; 
+        const search = `[data-section-slug=${slug}]`;
+        const screen = document.querySelector(search);
+        screen?.scrollIntoView({
+          behavior: 'auto',
+          block: 'start',
+        });
         this.current = slug;
-      }
+      }      
     }"
-
-    @keyup="console.log($event)"
 
     x-init="const sections = document.querySelectorAll('section');
 
@@ -39,22 +43,13 @@
         }
       });
 
-      current = navItems[0].slug;
-
-      $watch('current', value => {        
-        const search = `[data-section-slug=${value}]`;
-        const screen = document.querySelector(search);
-        screen.scrollIntoView({
-          behavior: 'auto',
-          block: 'start',
-        });
-      });      
+      current = navItems[0].slug;      
 
       addEventListener('scroll', (e) => {                  
         clearTimeout(timeOut);
         timeOut = setTimeout(() => {
             isNavigating = false;            
-        }, 100);
+        }, 200);
       });      
       
       observer = new IntersectionObserver(
@@ -62,8 +57,8 @@
           for(const entry of entries) {
             if(entry.isIntersecting) {
               if (!isNavigating) {
-                const entrySlug = entry.target.dataset.sectionSlug;                            
-                current = entrySlug;              
+                const entrySlug = entry.target.dataset.sectionSlug;
+                current = entrySlug;
               }
             }
           }              
@@ -89,7 +84,7 @@
           >          
             <span 
               class="badge-lg tracking-wide badge rounded-sm" 
-              :class="current == navItem.slug ? 'badge-primary' : 'badge-neutral'"
+              :class="current == navItem.slug ? 'badge-outline !filter-none' : 'badge-neutral'"
               x-text="navItem.name"
             ></span>          
           </li>
@@ -134,7 +129,7 @@
                 </div>            
                 
                 <div class="flex flex-col lg:flex-row items-center gap-4 mt-12 lg:mt-6 2xl:mt-12">
-                  <a href="#" class="btn btn-neutral">
+                  <a href="#" class="btn btn-neutral rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                     </svg>
@@ -142,7 +137,7 @@
                   </a>
       
                   <div class="inline-block tooltip tooltip-outline"  data-tip="Click to copy e-mail to clipboard">
-                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline">
+                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline rounded-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                       </svg>
@@ -196,7 +191,7 @@
                 </div>
               </div>
               <canvas 
-                class="emscripten-ptack lg:h-full lg:w-full object-cover mask mask-squircle relative" 
+                class="emscripten-ptack lg:h-full lg:w-full object-cover mask mask-squircle relative transition-transform duration-700" x-bind:class="music ? 'rotate-90' : 'rotate-0' " 
                 id="canvas"
                 oncontextmenu="event.preventDefault()"
                 tabindex="-1">
@@ -245,7 +240,7 @@
                 </div>            
                 
                 <div class="flex flex-col lg:flex-row items-center gap-4 mt-12 lg:mt-6 2xl:mt-12">
-                  <a href="#" class="btn btn-neutral">
+                  <a href="#" class="btn btn-neutral rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                     </svg>
@@ -253,7 +248,7 @@
                   </a>
       
                   <div class="inline-block tooltip tooltip-outline"  data-tip="Click to copy e-mail to clipboard">
-                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline">
+                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline rounded-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                       </svg>
@@ -374,7 +369,7 @@
                 </div>            
                 
                 <div class="flex flex-col lg:flex-row items-center gap-4 mt-12 lg:mt-6 2xl:mt-12">
-                  <a href="#" class="btn btn-neutral">
+                  <a href="#" class="btn btn-neutral rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                     </svg>
@@ -382,7 +377,7 @@
                   </a>
       
                   <div class="inline-block tooltip tooltip-outline"  data-tip="Click to copy e-mail to clipboard">
-                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline">
+                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline rounded-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                       </svg>
@@ -418,7 +413,7 @@
               <div id="item1" class="carousel-item w-full">                  
                 <div class="flex w-full rounded-md p-6 gap-7">                                                          
                   <div style="filter: drop-shadow(-8px 8px 0px rgba(0,0,0,0.2));">                      
-                    <div class="mockup-code h-full bg-base-content/90">
+                    <div class="mockup-code h-full bg-base-content/90 rounded-sm">
                       <div class="flex w-full h-full gap-4 px-6 pb-8 pt-2">
                         <video src="videos/shpong.m4v" type="video/mp4" autoplay muted loop class="aspect-video h-auto w-1/2 shrink basis-1/2 object-contain rounded-sm"></video>
                         <div class="basis-1/2 shrink grow w-1/2 h-auto">
@@ -491,7 +486,7 @@
                 </div>            
                 
                 <div class="flex flex-col lg:flex-row items-center gap-4 mt-12 lg:mt-6 2xl:mt-12">
-                  <a href="#" class="btn btn-neutral">
+                  <a href="#" class="btn btn-neutral rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                     </svg>
@@ -499,7 +494,7 @@
                   </a>
       
                   <div class="inline-block tooltip tooltip-outline"  data-tip="Click to copy e-mail to clipboard">
-                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline">
+                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline rounded-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                       </svg>
@@ -551,7 +546,7 @@
           <div class="flex w-full justify-center">
 
             <div class="overflow-x-auto w-full lg:w-5/6 3xl:w-3/4">
-              <table class="table table-fixed w-full">
+              <table class="table table-fixed w-full table-sm bg-slate-100">
                 <!-- head -->
                 <thead>
                   <tr>                    
@@ -659,7 +654,7 @@
                 </div>            
                 
                 <div class="flex flex-col lg:flex-row items-center gap-4 mt-12 lg:mt-6 2xl:mt-12">
-                  <a href="#" class="btn btn-neutral">
+                  <a href="#" class="btn btn-neutral rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                     </svg>
@@ -667,7 +662,7 @@
                   </a>
       
                   <div class="inline-block tooltip tooltip-outline"  data-tip="Click to copy e-mail to clipboard">
-                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline">
+                    <a href="mailto:grzegorz.karol.jasinski@gmail.com" class="btn btn-outline rounded-sm">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                       </svg>
