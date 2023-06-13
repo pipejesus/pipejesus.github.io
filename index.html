@@ -8,12 +8,32 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Greg Jasiński 👣 Resume & Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-6a53ad11.js"></script>
-    <link rel="stylesheet" href="/assets/index-986cb064.css">
+    <!--Preloader styles-->
+    <style>      
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        z-index: 9999;
+      }
+      /* body:not(.loaded) {
+        overflow: hidden;
+      }
+      body.loaded #preloader {
+        display: none;
+      } */
+    </style>
+    <script type="module" crossorigin src="/assets/index-c9608c0e.js"></script>
+    <link rel="stylesheet" href="/assets/index-308fcffb.css">
   </head>
 
   <body x-data="dataBody">
+    <!-- <div id="preloader" class="bg-black fixed top-0 left-0 w-screen h-screen z-[9999]">
 
+    </div> -->
     <!--Site menu-->
     <div class="fixed bottom-0 left-0 w-full bg-white/60 p-2 lg:bg-transparent lg:p-0 lg:bottom-auto lg:left-auto lg:w-auto lg:top-12 lg:right-12 z-50">
       <ul class="text-center lg:text-right funky-nav">
@@ -33,8 +53,10 @@
     </div>
     <!--End: Site menu-->
 
+    
     <!--#1 Intro section-->
     <section
+      x-cloak
       class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start"
       data-section-slug="intro"
       data-section-name="hello there!"
@@ -145,9 +167,10 @@
       </div>
     </section>
     <!--End #1 Intro section-->
-
+  
     <!--#2 Animation section-->
     <section
+      x-cloak
       class="container lg:px-12 mx-auto lg:h-screen relative lg:snap-always lg:snap-start"
       data-section-slug="animation"
       data-section-name="visuals / motion"
@@ -210,7 +233,7 @@
 
               <canvas
                 class="emscripten-ptack w-full h-auto aspect-square lg:aspect-auto lg:h-full lg:w-full object-cover mask mask-squircle relative transition-all duration-[1800ms] hide-firefox-error"
-                x-bind:class="music ? 'rotate-90' : 'rotate-0' "
+                x-bind:class="music ? 'lg:rotate-90' : 'lg:rotate-0'"
                 id="canvas"
                 oncontextmenu="event.preventDefault()"
                 tabindex="-1"
@@ -382,6 +405,7 @@
 
     <!--#3a Core WordPress section-->
     <section
+      x-cloak
       class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start lg:h-screen"
       data-section-slug="wordpress_a"
       data-section-name="wordpress experience"
@@ -650,6 +674,7 @@
 
     <!--#3b Around WordPress section-->
     <section
+      x-cloak
       class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start lg:h-screen"
       data-section-slug="wordpress_b"
       data-section-name="around wordpress"
@@ -891,6 +916,7 @@
 
     <!--#4 Two of us section-->
     <section
+      x-cloak
       class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start lg:h-screen"
       data-section-slug="two_of_us"
       data-section-name="the two of us"
@@ -926,6 +952,7 @@
 
     <!--#4 Life skills section-->
     <section
+      x-cloak
       class="container px-6 lg:px-12 mx-auto lg:snap-always lg:snap-start lg:h-screen"
       data-section-slug="life"
       data-section-name="life skills"
